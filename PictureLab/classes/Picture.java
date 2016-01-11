@@ -201,7 +201,60 @@ public class Picture extends SimplePicture
             // loop from 13 to just before the mirror point
             for (int col = 13; col < mirrorPoint; col++)
             {
+                count++;
+                leftPixel = pixels[row][col];      
+                rightPixel = pixels[row]                       
+                [mirrorPoint - col + mirrorPoint];
+                rightPixel.setColor(leftPixel.getColor());
+            }
+        }
+        System.out.println(count);
+    }
+    
+    public void mirrorArms()
+    {
+        int mirrorPoint = 192;
+        Pixel leftPixel = null;
+        Pixel rightPixel = null;
+        Pixel[][] pixels = this.getPixels2D();
 
+        // loop through the rows
+        for (int row = 158; row < mirrorPoint; row++)
+        {
+            // loop from 13 to just before the mirror point
+            for (int col = 108; col < 172; col++)
+            {
+                leftPixel = pixels[row][col];      
+                rightPixel = pixels[mirrorPoint - row + mirrorPoint][col];
+                rightPixel.setColor(leftPixel.getColor());
+            }
+        }
+        
+        for (int row = 171; row < mirrorPoint; row++)
+        {
+            // loop from 13 to just before the mirror point
+            for (int col = 239; col < 294; col++)
+            {
+                leftPixel = pixels[row][col];     
+                rightPixel = pixels[mirrorPoint - row + mirrorPoint][col];
+                rightPixel.setColor(leftPixel.getColor());
+            }
+        }
+    }
+    
+    public void mirrorGull()
+    {
+        int mirrorPoint = 349;
+        Pixel leftPixel = null;
+        Pixel rightPixel = null;
+        Pixel[][] pixels = this.getPixels2D();
+
+        // loop through the rows
+        for (int row = 227; row < 340; row++)
+        {
+            // loop from 13 to just before the mirror point
+            for (int col = 230; col < mirrorPoint; col++)
+            {
                 leftPixel = pixels[row][col];      
                 rightPixel = pixels[row]                       
                 [mirrorPoint - col + mirrorPoint];
