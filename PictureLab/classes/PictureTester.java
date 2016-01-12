@@ -66,7 +66,7 @@ public class PictureTester
         caterpillar.mirrorHorizontal();
         caterpillar.explore();
     }
-    
+
     public static void testMirrorHorizontalBotToTop()
     {
         Picture caterpillar = new Picture("caterpillar.jpg");
@@ -74,7 +74,7 @@ public class PictureTester
         caterpillar.mirrorHorizontalBotToTop();
         caterpillar.explore();
     }
-    
+
     public static void testMirrorDiaganol()
     {
         Picture caterpillar = new Picture("caterpillar.jpg");
@@ -82,7 +82,7 @@ public class PictureTester
         caterpillar.mirrorDiagonal();
         caterpillar.explore();
     }
-    
+
     public static void testMirrorArms()
     {
         Picture snowman = new Picture("snowman.jpg");
@@ -90,7 +90,7 @@ public class PictureTester
         snowman.mirrorArms();
         snowman.explore();
     }
-    
+
     public static void testMirrorGull()
     {
         Picture seagull = new Picture("seagull.jpg");
@@ -99,6 +99,30 @@ public class PictureTester
         seagull.explore();
     }
     
+    public static void testKeepOnlyBlue()
+    {
+        Picture seagull = new Picture("seagull.jpg");
+        seagull.explore();
+        seagull.keepOnlyBlue();
+        seagull.explore();
+    }
+    
+    public static void testNegate()
+    {
+        Picture beach = new Picture("beach.jpg");
+        beach.explore();
+        beach.negate();
+        beach.explore();
+    }
+    
+    public static void testGrayscale()
+    {
+        Picture seagull = new Picture("seagull.jpg");
+        seagull.explore();
+        seagull.grayscale();
+        seagull.explore();
+    }
+
     /** Main method for testing.  Every class can have a main
      * method in Java */
     public static void main(String[] args)
@@ -108,6 +132,8 @@ public class PictureTester
         // to run
         SimplePicture p = new Picture();
         testZeroBlue();
+        testNegate();
+        testGrayscale();
         //testKeepOnlyBlue();
         //testKeepOnlyRed();
         //testKeepOnlyGreen();
@@ -117,13 +143,14 @@ public class PictureTester
         testMirrorVertical();
         testMirrorVerticalRightToLeft();
         testMirrorHorizontal();
-        //testMirrorTemple();
-        //testMirrorArms();
-        //testMirrorGull();
+        testMirrorTemple();
+        testMirrorArms();
+        testMirrorGull();
+        testKeepOnlyBlue();
         //testMirrorDiagonal();
-        //testCollage();
+        testCollage();
         //testCopy();
-        //testEdgeDetection();
+        testEdgeDetection();
         //testEdgeDetection2();
         //testChromakey();
         //testEncodeAndDecode();

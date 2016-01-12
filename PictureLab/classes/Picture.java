@@ -97,6 +97,48 @@ public class Picture extends SimplePicture
             }
         }
     }
+    
+    public void keepOnlyBlue()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                pixelObj.setRed(0);
+                pixelObj.setGreen(0);
+            }
+        }
+    }
+    
+    public void negate()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                pixelObj.setRed(255-pixelObj.getRed());
+                pixelObj.setRed(255-pixelObj.getGreen());
+                pixelObj.setRed(255-pixelObj.getBlue());
+            }
+        }
+    }
+    
+    public void grayscale()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        int total = 0;
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                pixelObj.setGreen((pixelObj.getRed() + pixelObj.getGreen() + pixelObj.getBlue()) / 3);
+                pixelObj.setBlue((pixelObj.getRed() + pixelObj.getGreen() + pixelObj.getBlue()) / 3);
+                pixelObj.setRed((pixelObj.getRed() + pixelObj.getGreen() + pixelObj.getBlue()) / 3);
+            }
+        }
+    }
 
     /** Method that mirrors the picture around a 
      * vertical mirror in the center of the picture
@@ -175,12 +217,14 @@ public class Picture extends SimplePicture
         Pixel leftPixel = null;
         Pixel rightPixel = null;
         int width = pixels[0].length;
+        int dimension = 0;
         for (int row = pixels.length/2; row < pixels.length; row++)
         {
             for (int col = 0; col < width; col++)
             {
+                
                 leftPixel = pixels[row][col];
-                rightPixel = pixels[pixels.length-row-1][col];
+                rightPixel = pixels[col][row];
                 rightPixel.setColor(leftPixel.getColor());
             }
         } 
@@ -335,6 +379,12 @@ public class Picture extends SimplePicture
                     leftPixel.setColor(Color.WHITE);
             }
         }
+    }
+    
+    public void cropAndCopy(Picture sourcePicture, int startSourceRow, int endSourceRow, 
+    int startSourceCol, int endSourceCol, int startDestRow, int startDestCol)
+    {
+            
     }
 
     /* Main method for testing - each class in Java can have a main 
