@@ -122,6 +122,23 @@ public class PictureTester
         seagull.grayscale();
         seagull.explore();
     }
+    
+    public static void testFixUnderwater()
+    {
+        Picture water = new Picture("water.jpg");
+        water.explore();
+        water.fixUnderwater();
+        water.explore();
+    }
+    
+    public static void testCropAndCopy()
+    {
+        Picture water = new Picture("water.jpg");
+        Picture beach = new Picture("beach.jpg");
+        water.explore();
+        water.cropAndCopy(beach,100,200,100,200,300,300);
+        water.explore();
+    }
 
     /** Main method for testing.  Every class can have a main
      * method in Java */

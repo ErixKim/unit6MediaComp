@@ -139,6 +139,18 @@ public class Picture extends SimplePicture
             }
         }
     }
+    
+    public void fixUnderwater()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                pixelObj.setRed(255);
+            }
+        }
+    }
 
     /** Method that mirrors the picture around a 
      * vertical mirror in the center of the picture
@@ -218,11 +230,18 @@ public class Picture extends SimplePicture
         Pixel rightPixel = null;
         int width = pixels[0].length;
         int dimension = 0;
-        for (int row = pixels.length/2; row < pixels.length; row++)
+        if (width < pixels.length)
         {
-            for (int col = 0; col < width; col++)
+            dimension = width;
+        }
+        else
+        {
+            dimension = pixels.length;
+        }
+        for (int row = 0; row < dimension; row++)
+        {
+            for (int col = 0; col < dimension; col++)
             {
-                
                 leftPixel = pixels[row][col];
                 rightPixel = pixels[col][row];
                 rightPixel.setColor(leftPixel.getColor());
@@ -306,6 +325,8 @@ public class Picture extends SimplePicture
             }
         }
     }
+    
+   
 
     /** copy from the passed fromPic to the
      * specified startRow and startCol in the
@@ -384,7 +405,25 @@ public class Picture extends SimplePicture
     public void cropAndCopy(Picture sourcePicture, int startSourceRow, int endSourceRow, 
     int startSourceCol, int endSourceCol, int startDestRow, int startDestCol)
     {
-            
+        Pixel endPixel = null;
+        Pixel sourcePixel = null;
+        Pixel[][] sourceGrid = sourcePicture.getPixels2D();
+        Pixel[][] endGrid = this.getPixels2D();
+        int counter = 0;
+        int counter2 = 0;
+        for (int row = startSourceRow; row < endSourceRow; row++)
+        {
+            for (int col = startSourceCol; col < endSourceCol; col++)
+            {
+                sourcePixel = sourceGrid[row][col];
+                endPixel = endGrid[startDestRow + counter][startDestCol + counter2];
+                endPixel.setColor(sourcePixel.getColor());
+                counter2 ++;
+               
+            }
+            counter++;
+            counter2 = 0;
+        }
     }
 
     /* Main method for testing - each class in Java can have a main 
