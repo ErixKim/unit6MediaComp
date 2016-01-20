@@ -42,7 +42,7 @@ public class PictureTester
         canvas.createCollage();
         canvas.explore();
     }
-
+    
     /** Method to test edgeDetection */
     public static void testEdgeDetection()
     {
@@ -138,6 +138,14 @@ public class PictureTester
         water.explore();
         water.cropAndCopy(beach,100,200,100,200,300,300);
         water.explore();
+    }
+    
+    public static void testScaleByHalf()
+    {
+        Picture water = new Picture("water.jpg");
+        water.explore();
+        Picture newWater = water.scaleByHalf();
+        newWater.explore();
     }
 
     /** Main method for testing.  Every class can have a main

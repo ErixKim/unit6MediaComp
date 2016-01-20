@@ -425,6 +425,29 @@ public class Picture extends SimplePicture
             counter2 = 0;
         }
     }
+    
+    public Picture scaleByHalf()
+    {
+        Picture picture = new Picture(1152, 1536);
+        Pixel leftPixel = null;
+        Pixel rightPixel = null;
+        Pixel[][] pixels = this.getPixels2D();
+        Pixel[][] picturePixels = picture.getPixels2D();
+        int counter1 = 0;
+        int counter2 = 0;
+        for (int i = 0; i < pixels.length; i += 2)
+        {
+            for (int j = 0; j < pixels[i].length; j += 2)
+            {
+                leftPixel = pixels[i][j];
+                picturePixels[counter1][counter2].setColor(leftPixel.getColor());
+                counter2 ++;
+            }
+            counter1 ++;
+            counter2 = 0;
+        }
+        return picture;
+    }
 
     /* Main method for testing - each class in Java can have a main 
      * method 
